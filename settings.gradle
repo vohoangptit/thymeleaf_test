@@ -1,0 +1,8 @@
+rootProject.name = 'prototype'
+include ':businessLogic'
+include ':portal'
+include ':common'
+
+project(':businessLogic').projectDir = new File(settingsDir, './businessLogic')
+project(':portal').projectDir = new File(settingsDir, './portal')
+project(':common').projectDir = new File(settingsDir, './common')

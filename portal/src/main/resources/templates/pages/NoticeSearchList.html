@@ -1,0 +1,112 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{MasterLayout}">
+
+<head>
+    <title th:text="#{GUI001.page_name}"></title>
+    <link media="all" rel="stylesheet" th:href="@{/pages/css/NoticeSearchList.css}" type="text/css">
+</head>
+
+<th:block layout:fragment="content">
+
+    <div class="page-title">
+        <h5 th:text="#{GUI001.page_name}"></h5>
+        <hr />        
+    </div>
+
+    <div class="header">
+        <form id="search-conditions">
+            <div class="card">
+                <div class="card-header" th:text="#{search} + #{conditions}"></div>
+
+                <div class="card-body">
+                    <div class="row form-group">
+                        <div class="col-md-2 col-4">
+                            <label class="control-label" th:text="#{title}"></label>
+                        </div>
+                        <div class="col-md-4 col-8">
+                            <input type="text" class="form-control form-control-sm" name="title" th:value="${title}"
+                                maxlength="64" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-2 col-4">
+                            <label class="control-label" th:text="#{body_contents}"></label>
+                        </div>
+                        <div class="col-md-4 col-8">
+                            <input type="text" class="form-control form-control-sm" name="notice" th:value="${notice}"
+                                maxlength="256" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="commands">
+                        <button class="btn btn-sm btn-primary" th:text="#{search}"></button>
+                        <button type="button" class="btn btn-sm btn btn-light btn-clear" th:text="#{clear}"></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="detail">
+        <div class="section-properties">
+            <div class="pull-left total-page">
+                <span
+                    th:utext="#{GUI001.label.display(${(noticePage.totalElements > 0) ? (index + 1) : '0'} + '-' + ${(index + 5) > noticePage.totalElements ? noticePage.totalElements : (index + 5)}, ${noticePage.totalElements})}"></span>
+            </div>
+
+            <div th:replace="~{/fragments/pagination(${noticePage.totalPages},
+                                                           ${currentPage},
+                                                           ${sequencePagination},
+                                                           @{/notice/search(title=${title}, notice=${notice})}
+                                                           )}"></div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title text-center">
+                    <div class="pull-left" th:text="#{search} + #{result} + #{list}"></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover table-bordered datatable">
+                        <thead>
+                        <tr>
+                            <th class="text-center" style="width:5%">No.</th>
+                            <th class="text-center" style="width:50%;" th:text="#{title}"></th>
+                            <th class="text-center" style="width:15%;" th:text="#{send_date}"></th>
+                            <th class="text-center" th:text="#{body_contents}"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row"
+                                th:if="${!isFirstLoad and (noticePage.content != null and !noticePage.content.isEmpty())}"
+                                th:each="notice, iStat : ${noticePage.content}"
+                                th:data-href="@{/notice/{id}/detail(id=${notice.id})}">
+                                <td class="text-center"><span th:text="${iStat.count + index}"></span></td>
+                                <td class="text-center"><span th:text="${notice.title}"></span></td>
+                                <td class="text-center"><span th:text="${#dates.format(notice.announceDate, 'yyyy-MM-dd HH:mm:ss')}"></span></td>
+                                <td><span class="notice" th:text="${notice.notice}"></span></td>
+                            </tr>
+
+                            <!--初期表示時、検索結果一覧フィールドには何も表示されない。-->
+                            <tr
+                                th:if="${!isFirstLoad and (noticePage.content == null or noticePage.content.isEmpty())}">
+                                <td colspan="4" class="text-center">
+                                    <span th:text="#{GUI001.label.none}"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/pages/js/NoticeSearchList.js}" type="text/javascript"></script>
+</th:block>
+
+</html>

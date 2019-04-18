@@ -1,0 +1,64 @@
+# Created by https://www.gitignore.io/api/java,gradle
+
+### Java ###
+*.class
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
+### Gradle ###
+.gradle
+/build/
+common/build
+bin/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+# End of https://www.gitignore.io/api/java,gradle
+
+# IDE
+.idea
+.classpath
+.project
+/.classpath
+/.project
+.vscode
+/logs/
+.settings
+portal/logs/
+portal/out/
+portal/build/
+common/out/
+common/logs/
+businessLogic/out
+portal/WEB-INF/
+.checkstyle
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/CommonCodesMapperImpl.java
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/NoticeMailMapperImpl.java
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/NoticeMapperImpl.java
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/NoticeTemplateMapperImpl.java
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/OperationLogMapperImpl.java
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/RoleMapperImpl.java
+businessLogic/src/main/java/jp/sbpayment/bpr/bl/mapper/UserMapperImpl.java

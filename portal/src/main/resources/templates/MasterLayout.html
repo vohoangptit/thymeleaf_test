@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="ctx" th:content="${#httpServletRequest.getContextPath()}">
+    <title>SBPS Web Application</title>
+    <meta th:replace="~{/fragments/htmlStyle :: css}">
+</head>
+
+<script th:inline="javascript">
+        var jsonMessages = [[${session.jsonMessages}]];
+</script>
+<body>    
+	
+    <div class="container-fluid">
+        <div th:replace="~{/fragments/topNav :: topNav}" ></div>
+        <!-- ヘッダーのレイアウト -->
+        <div class="screen-body">
+            <div class="d-flex" id="wrapper">
+                <div th:replace="~{/fragments/leftSideMenu :: leftSideMenu}"></div>
+                <!--TODO: ボディコンテンツを定義するHTMLをここに記述します。-->
+                <div class="body-content">
+                    <th:block layout:fragment="content"></th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{/fragments/htmlScript :: js}"></div>
+    <th:block layout:fragment="script"></th:block>
+    <section id="dialog-container">
+        <!--TODO: ダイアログを定義するHTMLをここに記述します。-->
+        <th:block layout:fragment="dialog"></th:block>
+    </section>
+
+    <section class="notify-container">
+        <div class="alert alert-dismissible fade hide" role="alert">
+            <p class="message-content"></p>
+            <hr />
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </section>
+
+</body>
+</html>

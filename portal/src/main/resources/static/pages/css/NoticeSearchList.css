@@ -1,0 +1,24 @@
+.detail {
+    margin-top:30px;
+}
+
+.section-properties {
+    position: relative;
+}
+
+.total-page {
+    position: absolute;
+    bottom: 0;
+}
+
+.table-row td{
+    cursor:pointer;
+}
+
+.datatable span.notice {
+  display:block;
+  overflow: hidden;
+  width:20em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

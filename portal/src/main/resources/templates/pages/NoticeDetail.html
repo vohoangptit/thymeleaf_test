@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{MasterLayout}">
+
+<head>
+    <title th:text="#{GUI002.page_name}"></title>
+</head>
+
+<th:block layout:fragment="content">
+
+    <div class="page-title">
+        <h5 th:text="#{GUI002.page_name}"></h5>
+        <hr />
+    </div>
+
+    <div class="card">
+        <div class="card-header" th:text="#{notification} + #{content}"> </div>
+        <div class="card-body">
+            <div class="row form-group">
+                <label for="staticTitle" class="col-md-2 offset-md-1 col-4 col-form-label" th:text="#{title}"></label>
+                <div class="col-md-9 col-8">
+                    <span id="staticTitle" class="form-control-plaintext" th:text="${notice.title}"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="staticNoticeMethod" class="col-md-2 col-4 offset-md-1 col-form-label"
+                    th:text="#{method}"></label>
+                <div class="col-md-9 col-8">
+                    <span id="staticNoticeMethod" class="form-control-plaintext"
+                        th:text="${notice.displayTarget == 3 ? 'ポータル／メール' : (notice.displayTarget == 1 ? 'ポータル' : 'メール')}"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="staticAnnounceDate" class="col-md-2 col-4 offset-md-1 col-form-label"
+                    th:text="#{send_date}"></label>
+                <div class="col-md-9 col-8">
+                    <span id="staticAnnounceDate" class="form-control-plaintext"
+                          th:text="${#dates.format(notice.announceDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="staticText" class="col-md-2 col-4 offset-md-1 col-form-label"
+                    th:text="#{body_contents}"></label>
+                <div class="col-md-9 col-8">
+                    <span id="staticText" class="form-control-plaintext" th:text="${notice.notice}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="commands">
+                <button class="btn btn-sm btn-primary btn-delete" data-toggle="modal"
+                    data-target="#deleteNoticeConfirmDialog" th:text="#{delete}"></button>
+                <button class="btn btn-sm btn btn-primary" onclick="history.go(-1); return false;"
+                    th:text="#{return}"></button>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="dialog">
+    <th:block th:include="~{/dialogs/NoticeDetailDeleteConfirmModal}"></th:block>
+    <th:block th:include="~{/dialogs/NoticeDetailDeleteSuccessModal}"></th:block>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/pages/js/NoticeDetail.js}" type="text/javascript"></script>
+</th:block>
+
+</html>

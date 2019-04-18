@@ -1,0 +1,37 @@
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+          layout:fragment="deleteNoticeConfirmDialog">
+
+    <div id="deleteNoticeConfirmDialog" class="modal fade modal-deleteNoticeConfirm" tabindex="-1" role="dialog"
+         aria-labelledby="deleteNoticeConfirmDialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">削除確認画面（モーダルウィンドウ）</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <p class="col-11 offset-md-1">以下、通知を削除してもよろしいでしょうか。</p>
+                        <p class="col-10 offset-md-2">
+                            <b>
+                                <span th:text="${'タイトル名：'+notice.title}"></span>
+                            </b></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary btn-confirm-delete">削除</button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        var noticeId = [[${notice.id}]];
+    </script>
+    <script th:src="@{/dialogs/js/NoticeDetailDeleteConfirmModal.js}" type="text/javascript" th:inline="javascript"></script>
+
+
+</th:block>

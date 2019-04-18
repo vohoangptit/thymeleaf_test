@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+           th:fragment="leftSideMenu" th:remove="tag">
+    <nav class="bg-light border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+            <a th:href="@{/notice/search}" th:text="#{Menu.notice.search}"
+               class="list-group-item list-group-item-action bg-light"></a>
+            <a th:href="@{/notice/create}" th:text="#{Menu.notice.regist}"
+               class="list-group-item list-group-item-action bg-light"></a>
+            <a th:if="${session.role == 'ROLE_ADMIN'}" th:href="@{/user/search}" th:text="#{Menu.user.search}"
+               class="list-group-item list-group-item-action bg-light"></a>
+            <a th:if="${session.role == 'ROLE_ADMIN'}" th:href="@{/user/regist}" th:text="#{Menu.user.regist}"
+               class="list-group-item list-group-item-action bg-light"></a>
+        </div>
+    </nav>
+</html>

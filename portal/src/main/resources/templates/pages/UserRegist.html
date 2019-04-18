@@ -1,0 +1,94 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{MasterLayout}">
+
+<head>
+    <title th:text="#{GUI010.page_name}"></title>
+</head>
+
+<th:block layout:fragment="content">
+    <form id="frm">
+        <div class="page-title">
+            <h5 th:text="#{GUI010.page_name}"></h5>
+            <hr/>
+        </div>
+        <div class="card">
+            <div class="card-header" th:text="#{user} + #{setting}"></div>
+            <div class="card-body">
+                <div class="row form-group">
+                    <label for="settingFirstName"
+                           class="col-md-2 offset-md-1 col-4 col-form-label" th:text="#{firstName}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" id="settingFirstName" name="settingFirstName" class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingLastName"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{lastName}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" id="settingLastName" name="settingLastName" class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingEmail"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{email}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" id="settingEmail" name="settingEmail" class="form-control"
+                               placeholder="xxx@abc.com">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingRole"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{role}"></label>
+                    <div class="col-md-5 col-8">
+                        <select id="settingRole" name="settingRole" class="form-control form-control-sm">
+                            <option value="" th:text="#{pleaseSelect}"></option>
+                            <option th:each="role : ${roles}" th:value="${role.id}"
+                                    th:utext="${role.name}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingUsername"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{username}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" class="form-control" name="settingUsername" id="settingUsername"/>
+                        <span style="color: red;" id="error"></span>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingPassword"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{password}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="password" id="settingPassword" name="settingPassword" class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label  for="settingConfirmPW"
+                            class="col-md-2 col-4 offset-md-1 col-form-label">パスワード確認</label>
+                    <div class="col-md-5 col-8">
+                        <input type="password" id="settingConfirmPW" name="settingConfirmPW" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="commands">
+                    <button class="btn btn-sm btn-primary btn-regist" data-toggle="modal"
+                            th:text="#{register}"></button>
+                    <button class="btn btn-sm btn btn-primary"
+                            th:text="#{close}"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</th:block>
+
+<th:block layout:fragment="dialog">
+    <th:block th:include="~{/dialogs/UserRegistCreateSuccessModal}" th:inline="javascript"></th:block>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/pages/js/UserRegist.js}" type="text/javascript" th:inline="javascript"></script>
+</th:block>
+
+</html>

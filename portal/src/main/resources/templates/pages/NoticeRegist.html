@@ -1,0 +1,116 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{MasterLayout}">
+
+<head>
+    <title th:text="#{GUI005.page_name}"></title>
+    <link media="all" rel="stylesheet" th:href="@{/pages/css/NoticeRegist.css}" type="text/css" />
+</head>
+
+<th:block layout:fragment="content">
+    <form id="frm">
+        <div class="page-title">
+            <h5 th:text="#{GUI005.page_name}"></h5>
+            <hr />
+        </div>
+
+        <div class="setting">
+            <div class="card">
+                <div class="card-header" th:text="#{notification} + #{setting}"></div>
+                <div class="card-body">
+                    <div class="row form-group">
+                        <label for="settingTemplate" class="col-md-2 col-4 col-form-label" th:text="#{template}"></label>
+                        <div class="col-md-4 col-8">
+                            <select id="settingTemplate" name="settingTemplate" class="form-control form-control-sm">
+                                <option value="" th:text="#{template} + #{select}"></option>
+                                <option th:each="template : ${templates}" th:value="${template.templateName}"
+                                    th:utext="${template.templateName}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group required">
+                        <label class="col-md-2 col-4 col-form-label" th:text="#{method}"></label>
+                        <div class="col-md-4 col-8 form-check-container">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input method-group" type="checkbox"
+                                    id="settingNoticeMethodPortal" name="settingNoticeMethodPortal" value="1">
+                                <label class="form-check-label" for="settingNoticeMethodPortal"
+                                       th:text="#{portal}"></label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input method-group" type="checkbox"
+                                    id="settingNoticeMethodMail" name="settingNoticeMethodMail" value="2">
+                                <label class="form-check-label" for="settingNoticeMethodMail" th:text="#{mail}"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-md-2 col-4 col-form-label" th:text="#{period}"></label>
+                        <div class="col-md-8 col-8 form-inline input-group-container">
+                            <label class="col-form-label" for="settingDisplayRange" th:text="#{display_period}"></label>
+                            <div class="col-6 col-md-2">
+                                <div class="input-group spinner">
+                                    <input type="text" class="form-control form-control-sm" value="1" min="1" max="999"
+                                        id="settingDisplayRange" name="settingDisplayRange" />
+                                    <div class="input-group-btn-vertical">
+                                        <button class="btn btn-sm btn-spinner" type="button"><em
+                                                class="fa fa-caret-up"></em></button>
+                                        <button class="btn btn-sm btn-spinner" type="button"><em
+                                                class="fa fa-caret-down"></em></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="col-form-label" th:text="#{day_display}"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="commands">
+                        <button type="button" class="btn btn-sm btn-primary btn-select" th:text="#{select}"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title text-center">
+                        <div class="pull-left" th:text="#{notification} + #{content}"></div>
+                    </div>
+                </div>
+                <div class="card-body">                    
+                      <div class="form-group required">
+                          <label for="contentTitleTemplate" class="col-md-2 col-4 col-form-label" th:text="#{title}"></label>
+                          <input type="text" id="contentTitleTemplate" name="contentTitleTemplate"
+                              class="form-control form-control-sm" />
+                      </div>
+                      <div class="form-group required">
+                          <label for="contentTextTemplate" class="col-md-2 col-4 col-form-label"
+                              th:text="#{body_contents}"></label>
+                          <textarea id="contentTextTemplate" name="contentTextTemplate"
+                              class="form-control form-control-sm" rows="10"></textarea>
+                      </div>                    
+                </div>
+                <div class="card-footer">
+                    <div class="commands">
+                        <button class="btn btn-sm btn-primary btn-regist" th:text="#{register}"></button>
+                        <button class="btn btn-sm btn btn-primary btn-send" th:text="#{send}"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</th:block>
+
+<th:block layout:fragment="dialog">
+    <th:block th:include="~{/dialogs/NoticeRegistConfirmModal}"></th:block>
+    <th:block th:include="~{/dialogs/NoticeRegistTransmissionCompletedModal}"></th:block>
+    <th:block th:include="~{/dialogs/NoticeRegistCreateSuccessModal}"></th:block>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/pages/js/NoticeRegist.js}" type="text/javascript"></script>
+</th:block>
+
+</html>

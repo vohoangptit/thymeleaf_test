@@ -1,0 +1,16 @@
+.detail {
+    margin-top:30px;
+}
+
+.section-properties {
+    position: relative;
+}
+
+.total-page {
+    position: absolute;
+    bottom: 0;
+}
+
+.table-row td{
+    cursor:pointer;
+}

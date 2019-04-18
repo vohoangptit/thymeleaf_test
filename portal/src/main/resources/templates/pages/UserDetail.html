@@ -1,0 +1,84 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{MasterLayout}">
+
+<head>
+    <title th:text="#{GUI002.page_name}"></title>
+</head>
+
+<th:block layout:fragment="content">
+
+    <div class="page-title">
+        <h5 th:text="#{GUI002.page_name}"></h5>
+        <hr/>
+    </div>
+    <form id="frm">
+        <div class="card">
+            <div class="card-header" th:text="#{user} + #{content}"></div>
+
+            <div class="card-body">
+                <div class="row form-group">
+                    <label for="settingFirstName"
+                           class="col-md-2 offset-md-1 col-4 col-form-label" th:text="#{firstName}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" id="settingFirstName" name="settingFirstName" th:value="${user.firstName}"
+                               class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingLastName"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{lastName}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" id="settingLastName" name="settingLastName" th:value="${user.lastName}"
+                               class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingEmail"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{email}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="text" id="settingEmail" th:value="${user.email}" readonly class="form-control">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="settingRole"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{role}"></label>
+                    <div class="col-md-5 col-8">
+                        <select id="settingRole" name="settingRole" class="form-control form-control-sm">
+                            <option th:each="role : ${roles}" th:value="${role.id}"
+                                    th:utext="${role.name}"
+                                    th:selected="${role.id == user.roles[0].id}">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="isActive"
+                           class="col-md-2 col-4 offset-md-1 col-form-label" th:text="#{active}"></label>
+                    <div class="col-md-5 col-8">
+                        <input type="checkbox" class="form-check-input" id="isActive" name="isActive"
+                               th:checked="${user.isActive}"
+                               style="margin-left:1px;">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="commands">
+                    <button class="btn btn-sm btn-primary btn-update" th:text="#{update}"></button>
+                    <button class="btn btn-sm btn btn-primary"
+                            onclick="history.go(-1); return false;" th:text="#{back}"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</th:block>
+
+<th:block layout:fragment="dialog">
+    <th:block th:include="~{/dialogs/UserDetailUpdateConfirmModal}"></th:block>
+    <th:block th:include="~{/dialogs/UserDetailUpdateSuccessModal}"></th:block>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/pages/js/UserDetail.js}" type="text/javascript"></script>
+</th:block>
+
+</html>

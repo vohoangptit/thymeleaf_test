@@ -1,0 +1,112 @@
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  #announceError {
+    position: relative;
+    height: 100vh;
+  }
+  
+  #announceError .announceError {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .announceError {
+    max-width: 710px;
+    width: 100%;
+    padding-left: 220px;
+    line-height: 1.4;
+  }
+  
+  .announceError .announceError-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 150px;
+  }
+  
+  .announceError .announceError-icon h1 {
+    color: #688D82;
+    font-size: 9em;
+    margin: 0px;
+    font-weight: 900;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  .announceError h2 {
+    color: #292929;
+    font-size: 28px;
+      font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-top: 0;
+  }
+  
+  .announceError p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .announceError a {
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #fff;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 40px;
+    color: #292929;
+    font-weight: 700;
+    -webkit-box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 15px -5px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all;
+  }
+
+  .announceError a {
+    min-width:150px;
+    text-align:center;
+    cursor:pointer;
+  }
+  
+
+  .announceError a:hover {
+    color: #fff;
+    background-color: #688D82;
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .announceError {
+      text-align: center;
+    }
+    .announceError .announceError-icon {
+      position: relative;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .announceError {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  

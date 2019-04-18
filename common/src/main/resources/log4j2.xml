@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" packages="jp.sbpayment.bpr.common.filelog">
+    <Properties>
+        <Property name="LOG_PATTERN">[%d{yyyy-MM-dd'T'HH:mm:ss.SSS}][%host][%p][%pid][sid][account]%m(%C)%n</Property>
+        <Property name="logPath">./logs</Property>
+        <Property name="rollingFileName">Prototype</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!--================================================== -->
+        <RollingFile name="rollingFile_debug"
+                     fileName="${logPath}/${rollingFileName}_debug.log "
+                     filePattern="${logPath}/%d{yyyy-MM-dd}/${rollingFileName}_debug_%d{yyyy-MM-dd}.log">
+            <PatternLayout
+                    pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Causes a rollover if the log file is older than the current JVM's
+                    start time -->
+                <OnStartupTriggeringPolicy/>
+                <!-- Causes a rollover once the date/time pattern no longer applies to
+                    the active file -->
+                <TimeBasedTriggeringPolicy interval="1"
+                                           modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="DEBUG"/>
+        </RollingFile>
+        <!--================================================== -->
+        <RollingFile name="rollingFile_info"
+                     fileName="${logPath}/${rollingFileName}_info.log"
+                     filePattern="${logPath}/%d{yyyy-MM-dd}/${rollingFileName}_info_%d{yyyy-MM-dd}.log">
+            <PatternLayout
+                    pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Causes a rollover if the log file is older than the current JVM's
+                    start time -->
+                <OnStartupTriggeringPolicy/>
+                <!-- Causes a rollover once the date/time pattern no longer applies to
+                    the active file -->
+                <TimeBasedTriggeringPolicy interval="1"
+                                           modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="INFO"/>
+        </RollingFile>
+
+        <!--================================================== -->
+        <RollingFile name="rollingFile_warn"
+                     fileName="${logPath}/${rollingFileName}_warn.log"
+                     filePattern="${logPath}/%d{yyyy-MM-dd}/${rollingFileName}_warn_%d{yyyy-MM-dd}.log">
+            <PatternLayout
+                    pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Causes a rollover if the log file is older than the current JVM's
+                    start time -->
+                <OnStartupTriggeringPolicy/>
+                <!-- Causes a rollover once the date/time pattern no longer applies to
+                    the active file -->
+                <TimeBasedTriggeringPolicy interval="1"
+                                           modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="WARN"/>
+        </RollingFile>
+        <!--================================================== -->
+        <RollingFile name="rollingFile_error"
+                     fileName="${logPath}/${rollingFileName}_error.log"
+                     filePattern="${logPath}/%d{yyyy-MM-dd}/${rollingFileName}_error_%d{yyyy-MM-dd}.log">
+            <PatternLayout
+                    pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!-- Causes a rollover if the log file is older than the current JVM's
+                    start time -->
+                <OnStartupTriggeringPolicy/>
+                <!-- Causes a rollover once the date/time pattern no longer applies to
+                    the active file -->
+                <TimeBasedTriggeringPolicy interval="1"
+                                           modulate="true"/>
+            </Policies>
+            <ThresholdFilter level="ERROR"/>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="rollingFile_debug"/>
+            <AppenderRef ref="rollingFile_info"/>
+            <AppenderRef ref="rollingFile_warn"/>
+            <AppenderRef ref="rollingFile_error"/>
+        </Root>
+    </Loggers>
+</Configuration>

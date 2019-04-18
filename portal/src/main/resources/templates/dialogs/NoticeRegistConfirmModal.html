@@ -1,0 +1,37 @@
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:fragment="registNoticeConfirmDialog">
+
+    <div id="registNoticeConfirmDialog" class="modal fade modal-registNoticeConfirm" tabindex="-1" role="dialog"
+        aria-labelledby="registNoticeConfirmDialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="#{GUI006.page_name}"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmRegistNoticeConfirmDialog">
+                        <div class="row form-group">
+                            <p class="offset-md-1 offset-1 form-control-plaintext" th:utext="#{GUI006.label.text}"></p>
+                        </div>
+                        <div class="row form-group required">
+                            <label for="registConfirmTemplateName" class="col-md-2 col-5 col-form-label offset-md-2" th:text="#{template} + #{name}"></label>
+                            <div class="col-md-4 col-6">
+                                <input type="text" id="registConfirmTemplateName" name="registConfirmTemplateName" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary btn-confirm-register" th:text="#{register}"></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal" aria-hidden="true" th:text="#{close}"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/dialogs/js/NoticeRegistConfirmModal.js}" type="text/javascript"></script>
+
+</th:block>

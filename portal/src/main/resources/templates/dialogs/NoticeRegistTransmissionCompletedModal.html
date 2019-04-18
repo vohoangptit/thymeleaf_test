@@ -1,0 +1,31 @@
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:fragment="registTransmissionCompletedDialog">
+
+<div id="registTransmissionCompletedDialog" class="modal fade modal-registTransmissionCompleted" tabindex="-1" role="dialog" aria-labelledby="registTransmissionCompleted"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" th:text="#{GUI008.page_name}"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <p class="offset-md-1 form-control-plaintext" th:text="#{GUI008.label.text}"></p>
+                    <p class="offset-md-2 form-control-plaintext">
+                        <b th:text="#{title} + #{name} + ':'"></b>
+                        <b id="titleName"></b>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-light" data-dismiss="modal" aria-hidden="true" th:text="#{close}"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/dialogs/js/NoticeRegistTransmissionCompletedModal.js}" type="text/javascript"></script>
+
+</th:block> 
