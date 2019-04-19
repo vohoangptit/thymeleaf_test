@@ -1,6 +1,5 @@
 package jp.sbpayment.bpr.test.controller;
 
-import jp.sbpayment.bpr.bl.dto.RoleDto;
 import jp.sbpayment.bpr.bl.dto.UserDto;
 import jp.sbpayment.bpr.controller.UserSearchController;
 import jp.sbpayment.bpr.services.UserManagementService;
@@ -12,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -29,11 +29,14 @@ public class UserSearchControllerTest {
   @MockBean
   private UserManagementService userManagementService;
 
+  @MockBean
+  private Page<UserDto> page;
+
   private UserDto userDto;
 
-  private RoleDto roleDto;
-
   private PodamFactory podam = new PodamFactoryImpl();
+
+
 
   /**
    * Setup before running test case.
@@ -41,13 +44,11 @@ public class UserSearchControllerTest {
   @Before
   public void setUp() {
     userDto = podam.manufacturePojoWithFullData(UserDto.class);
-    roleDto = podam.manufacturePojoWithFullData(RoleDto.class);
   }
 
-  /*
   @Test
   public void showSearchUserSuccessful() throws Exception {
-    Mockito.when(userService.findPaginated(Mockito.any(PageRequest.class),
+    Mockito.when(userManagementService.findPaginated(Mockito.any(PageRequest.class),
             Mockito.any(String.class), Mockito.any(String.class)))
             .thenReturn(page);
 
@@ -75,7 +76,6 @@ public class UserSearchControllerTest {
                     .redirectedUrl("/user/search?name=name&email=email&page=3"))
             .andReturn();
   }
-  */
 
   @Test
   public void showDetailUserSuccessful() throws Exception {

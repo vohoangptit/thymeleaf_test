@@ -10,7 +10,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -19,6 +18,8 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_user")
 @EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity {
+  
+  private static final long serialVersionUID = 1L;
 
   @Column(name = "first_name", nullable = false, length = 256)
   private String firstName;
@@ -42,7 +43,6 @@ public class User extends BaseEntity {
   @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
   @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
           inverseJoinColumns = @JoinColumn(name = "role_id"))
-  @NotNull
   private List<Role> roles;
 
 }

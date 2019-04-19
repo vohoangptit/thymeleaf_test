@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 @Service
 @AllArgsConstructor
@@ -26,12 +25,6 @@ public class UserManagementServiceImpl
   private final RoleService roleService;
 
   private final BCryptPasswordEncoder passwordEncoder;
-
-  @Override
-  public void register(Model model) {
-
-    model.addAttribute("roles", loadRoles());
-  }
 
   @Override
   public int save(@Valid UserDto userDto) {

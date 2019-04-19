@@ -14,6 +14,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class CommonCodes extends BaseEntity {
 
+  private static final long serialVersionUID = 1L;
+
   @Column(name = "code_type", length = 20, nullable = false)
   private String codeType;
 

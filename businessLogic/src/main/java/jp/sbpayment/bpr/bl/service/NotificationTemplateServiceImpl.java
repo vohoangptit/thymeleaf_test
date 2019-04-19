@@ -39,4 +39,9 @@ public class NotificationTemplateServiceImpl extends
     return getMapper().toDto(entity);
   }
 
+  @Override
+  public void deleteAll() {
+
+    this.notificationTemplateRepository.deleteAll();
+  }
 }

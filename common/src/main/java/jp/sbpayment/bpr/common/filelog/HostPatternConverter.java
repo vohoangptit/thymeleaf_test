@@ -11,7 +11,7 @@ import org.apache.logging.log4j.core.pattern.LogEventPatternConverter;
 @ConverterKeys({"host"})
 public class HostPatternConverter extends LogEventPatternConverter {
 
-  private static final HostPatternConverter INSTANCE = new HostPatternConverter();
+  public static final HostPatternConverter INSTANCE = new HostPatternConverter();
 
   private HostPatternConverter() {
     super("host", "host");
@@ -26,8 +26,8 @@ public class HostPatternConverter extends LogEventPatternConverter {
       return InetAddress.getLocalHost().getHostAddress();
     } catch (UnknownHostException e) {
       e.printStackTrace();
+      return "";
     }
-    return "";
   }
 
   @Override

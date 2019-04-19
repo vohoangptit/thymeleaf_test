@@ -14,6 +14,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Notice extends BaseEntity {
 
+  private static final long serialVersionUID = 1L;
+  
   @Column(name = "title", length = 256, nullable = false)
   private String title;
 

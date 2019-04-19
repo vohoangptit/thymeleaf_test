@@ -11,6 +11,8 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_notice_template")
 @EqualsAndHashCode(callSuper = false)
 public class NoticeTemplate extends BaseEntity {
+  
+  private static final long serialVersionUID = 1L;
 
   @Column(name = "template_name", length = 256, nullable = false, unique = true)
   private String templateName;

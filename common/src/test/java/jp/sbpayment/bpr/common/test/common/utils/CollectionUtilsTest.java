@@ -1,4 +1,4 @@
-package jp.sbpayment.bpr.common.test.utils;
+package jp.sbpayment.bpr.common.test.common.utils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

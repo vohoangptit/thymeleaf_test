@@ -5,8 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 public class FileLogCommon {
   
-  private static FileLogCommon instance;
-  private static Logger logger;
+  public static FileLogCommon instance;
+  public static Logger logger;
 
   /**
    * Single instance logger.

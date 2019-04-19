@@ -12,6 +12,8 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_operation_log")
 @EqualsAndHashCode(callSuper = true)
 public class OperationLog extends BaseEntity {
+  
+  private static final long serialVersionUID = 1L;
 
   @Column(name = "mid", length = 20)
   private String mid;

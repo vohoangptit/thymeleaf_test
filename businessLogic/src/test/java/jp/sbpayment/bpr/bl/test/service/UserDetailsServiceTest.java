@@ -46,7 +46,7 @@ public class UserDetailsServiceTest {
   @Test
   public void testLoadUserByUsernameNotFound() {
     try {
-      UserDetails userDetails = userDetailsService.loadUserByUsername(userDto.getUsername());
+      /* UserDetails userDetails = */userDetailsService.loadUserByUsername(userDto.getUsername());
       Assert.fail("Exception not thrown");
     } catch (UsernameNotFoundException e) {
       Assert.assertEquals("Username " + userDto.getUsername() + " not found.", e.getMessage());
@@ -57,7 +57,7 @@ public class UserDetailsServiceTest {
   public void testLoadUserByUsernameNotActive() {
     try {
       userService.save(userDto);
-      UserDetails userDetails = userDetailsService.loadUserByUsername(userDto.getUsername());
+      /* UserDetails userDetails = */userDetailsService.loadUserByUsername(userDto.getUsername());
       Assert.fail("Exception not thrown");
     } catch (UsernameNotFoundException e) {
       Assert.assertEquals("Username " + userDto.getUsername() + " not active.", e.getMessage());

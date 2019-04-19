@@ -22,8 +22,8 @@ public class UserRegisterController {
    */
   @GetMapping("/user/regist")
   public String showRegist(Model model) {
-    
-    this.userManagementService.register(model);
+
+    model.addAttribute("roles", this.userManagementService.loadRoles());
     return "pages/UserRegist";
   }
 

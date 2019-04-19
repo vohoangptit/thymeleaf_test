@@ -1,6 +1,5 @@
 package jp.sbpayment.bpr.test.controller;
 
-import jp.sbpayment.bpr.bl.dto.RoleDto;
 import jp.sbpayment.bpr.bl.dto.UserDto;
 import jp.sbpayment.bpr.common.utils.JsonUtils;
 import jp.sbpayment.bpr.controller.UserRegisterController;
@@ -34,7 +33,7 @@ public class UserRegisterControllerTest {
 
   private UserDto userDto;
 
-  private RoleDto roleDto;
+  // private RoleDto roleDto;
 
   /**
    * Setup before running test case.

@@ -1,5 +1,7 @@
 package jp.sbpayment.bpr.config;
 
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.Executor;
 import jp.sbpayment.bpr.log.LogInterceptor;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
@@ -21,12 +23,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
    * Task Executor.
    */
   @Bean
-  public Executor taskExecutor() {
+  public Executor taskExecutor() throws IOException {
+    Properties properties = new Properties();
+    properties.load(getClass().getClassLoader().getResourceAsStream("application.properties"));
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-    executor.setCorePoolSize(4);
-    executor.setMaxPoolSize(4);
-    executor.setQueueCapacity(500);
-    executor.setThreadNamePrefix("QueueExecutor-");
+    executor.setCorePoolSize(Integer.parseInt(properties.getProperty("executor.corepoolsize")));
+    executor.setMaxPoolSize(Integer.parseInt(properties.getProperty("executor.maxpoolsize")));
+    executor.setQueueCapacity(Integer.parseInt(properties.getProperty("executor.queuecapacity")));
+    executor.setThreadNamePrefix(properties.getProperty("executor.threadnameprefix"));
     executor.initialize();
     return executor;
   }

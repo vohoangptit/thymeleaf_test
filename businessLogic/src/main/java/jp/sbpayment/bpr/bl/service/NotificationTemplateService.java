@@ -8,4 +8,6 @@ public interface NotificationTemplateService extends
 
   NoticeTemplateDto findByTemplateName(String templateName);
 
+  void deleteAll();
+
 }

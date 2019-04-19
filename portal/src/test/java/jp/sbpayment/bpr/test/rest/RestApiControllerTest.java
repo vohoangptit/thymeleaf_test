@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import jp.sbpayment.bpr.api.RestApiController;
 import jp.sbpayment.bpr.bl.dto.NoticeDto;
-import jp.sbpayment.bpr.bl.service.NotificationService;
+import jp.sbpayment.bpr.services.NoticeManagementService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class RestApiControllerTest {
   private MockMvc mockMvc;
 
   @MockBean
-  private NotificationService noticeService;
+  private NoticeManagementService noticeManagementService;
 
   @Autowired
   private ObjectMapper objectMapper;
@@ -60,7 +60,7 @@ public class RestApiControllerTest {
 
   @Test
   public void searchNoticeSuccess() throws Exception {
-    Mockito.when(noticeService.findById(noticeDto.getId())).thenReturn(noticeDto);
+    Mockito.when(noticeManagementService.showDetail(noticeDto.getId())).thenReturn(noticeDto);
     MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/notice/1")
             .contentType(MediaType.APPLICATION_JSON_VALUE))
             .andReturn();

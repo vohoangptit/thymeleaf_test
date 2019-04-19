@@ -11,6 +11,8 @@ import lombok.EqualsAndHashCode;
 @Table(name = "t_notice_mail")
 @EqualsAndHashCode(callSuper = false)
 public class NoticeMail extends BaseEntity {
+  
+  private static final long serialVersionUID = 1L;
 
   @Column(name = "notice_id", length = 256, nullable = false)
   private String noticeId;
